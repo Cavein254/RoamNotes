@@ -1,0 +1,10 @@
+:PROPERTIES:
+:ID:       54c3c506-ab3a-4186-8888-0b05dc2fd216
+:END:
+#+title: 2023-11-12
+* 12:34 PM: Repository to host my design projects [0/5] [%]
+** TODO Create a repo
+** TODO Create a Landing Page
+** TODO Link the landing page with the Pages folder
+** TODO Use react-router-dom as navigation between the pages
+** TODO Create the page to be displayed
