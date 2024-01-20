@@ -1,0 +1,17 @@
+:PROPERTIES:
+:ID:       ad37942f-122b-4974-8c8e-d90dcc957f90
+:END:
+
+:PROPERTIES:
+:ID:       2ce00a3f-8ac8-40d8-a2c3-257437774b5b
+:END:
+#+title: 2023-11-13
+* c shell
+*** execve
+*** fork
+creates a new process by duplicating the calling process. The new process is the  child process.
+The parent and the child run in different memory spaces.
+The child is created with a single thread called ~fork()~
+On success the PID of the child is returned to the parent. On failure -1 is returned.
+
+*** write()

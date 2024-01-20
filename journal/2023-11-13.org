@@ -1,0 +1,91 @@
+:PROPERTIES:
+:ID:       2ce00a3f-8ac8-40d8-a2c3-257437774b5b
+:END:
+#+title: 2023-11-13
+* The shell system
+The ~unistd.h~ provides two important functions that are useful in the creation of a shell. These functions are:
+- ~getpid()~ : This gets the id of the child process
+- ~getppid()~ : This function provides the id of the parent process
+
+#+begin_src c
+#include <stdio.h>
+#include <unistd.h>
+
+int main ()
+{
+	printf("Function with the process id %d begins\n",getpid());
+	printf("The parent is  %d begins\n",getppid());
+}
+#+end_src
+
+Notice that if we run the above program numerous times the /process_id/ changes while the /parent_id/ stays the same. The reason for this is that the /process_id/ is a child of the /parent_id/. The /parent_id/ is an instance of the shell itself.
+
+You can also find the /parent_id/ of the shell program running your files using the ~echo $$~ command which will print the /parent_id/ of your programs.
+
+*** Ophan Process
+In this, the parent process terminates before the child. The child processes therefore gets adopted by the init process
+
+#+begin_src c
+	pid_t pid;
+	pid = fork();
+	if (pid == -1)
+	{
+		printf("Error occured initializing the child \n");
+	}
+	if (pid == 0)
+	{
+		sleep(40);
+		printf("Running the child process \n");
+	} else
+	{
+		printf("The parent process running \n");
+	}
+	return (0);
+#+end_src
+
+*** Zombie Process
+In this, the child process terminates before the parent
+#+begin_src c
+	pid_t pid;
+	pid = fork();
+	if (pid == -1)
+	{
+		printf("Error occured initializing the child \n");
+	}
+	if (pid == 0)
+	{
+		printf("Running the child process \n");
+	} else
+	{
+		sleep(40);
+		printf("The parent process running \n");
+	}
+#+end_src
+Zombie processes are actually undesirable as they tend to fill up the process table which is finite. In the event that the process table is filled, the system is unable to create new processes hence may cause the system to crash.
+
+As a solution to eliminating zombie processes, the ~wait()~ function is used. This ensures that the parent process waits apon the child process before terminating. Executing ~ps -aux | grep -e "wait"~ on the terminal revials that there are no child zombie processes.
+#+begin_src c
+#include <stdio.h>
+#include <unistd.h>
+#include <sys/types.h>
+#include <sys/wait.h>
+int main ()
+{
+	pid_t pid;
+	pid = fork();
+	if (pid == -1)
+	{
+		printf("Error occured initializing the child \n");
+	}
+	if (pid == 0)
+	{
+		printf("Running the child process \n");
+	} else
+	{
+		wait(NULL);
+		sleep(40);
+		printf("The parent process running \n");
+	}
+	return (0);
+}
+#+end_src

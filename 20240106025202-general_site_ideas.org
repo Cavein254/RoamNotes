@@ -1,0 +1,9 @@
+:PROPERTIES:
+:ID:       43b71d63-6195-421e-bfa2-6772a598a72b
+:END:
+#+title: General site ideas *important*
+The whole point is to create a site with the following charateristics:
+ 1 - Paid membership - create communities where members pay to join
+ 2 - Paid virtual friends - a site where members pay to have virtual friends
+ 3 - Create a Garage Band - place job adverts for finding partners in business ventures
+ 4 - Recruitment agency - where developer judge themselves and a panel review their expertise

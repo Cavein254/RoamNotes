@@ -1,0 +1,10 @@
+:PROPERTIES:
+:ID:       54dbe927-9f1e-4a30-9737-221eae92feff
+:END:
+#+title: Monthly Tasks
+*  [#TODO] 12th Sunday November 2023
+
+** Complete Alx Project [0/0] [0%]
+ * TODO Create a repo
+ * TODO Add More
+ *

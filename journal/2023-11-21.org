@@ -1,0 +1,28 @@
+:PROPERTIES:
+:ID:       95fedc06-c1da-46ec-a88d-b4935427da4e
+:END:
+#+title: 2023-11-21 Getline
+
+* The getline() function
+
+This function reads an entire line from stream. It accepts three parameters as input. The buffer received is null-terminated and includes a new line character.
+
+#+begin_src c
+#include <stdio.h>
+#include <stdlib.h>
+
+int main(void) {
+        char *line = NULL;
+        size_t len = 0;
+
+        if (getline(&line, &len, stdin) == -1)
+                perror("Error reading from stream")
+        printf("%s", line);
+        free(line);
+        return (0);
+}
+#+end
+
+ **** char * line - This is a pointer that is used to store the value read from the string. It is important to set this value to NULL at initialization to avoid collection of gabbage input. This value should be freed after use.
+ **** size_t len - this value denotes the allocated size in memory. This value should be initialized as zero.
+ **** ssize_t read
